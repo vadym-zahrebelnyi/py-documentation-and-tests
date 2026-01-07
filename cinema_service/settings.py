@@ -157,8 +157,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-
-
 SPECTACULAR_SETTINGS = {
     "TITLE": "Cinema Service API",
     "DESCRIPTION": (

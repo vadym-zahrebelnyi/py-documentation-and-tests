@@ -9,7 +9,6 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
 
-
 @extend_schema_view(
     get=extend_schema(
         description="Get the details of the currently authenticated user."
@@ -18,7 +17,9 @@ class CreateUserView(generics.CreateAPIView):
         description="Update all fields for the currently authenticated user."
     ),
     patch=extend_schema(
-        description="Partially update the details of the currently authenticated user."
+        description=(
+            "Partially update the details of the currently authenticated user."
+        )
     ),
 )
 class ManageUserView(generics.RetrieveUpdateAPIView):
