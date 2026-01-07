@@ -2,7 +2,7 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
-from user.serializers import UserSerializer, AuthTokenSerializer
+from user.serializers import UserSerializer
 
 
 class CreateUserView(generics.CreateAPIView):

@@ -73,6 +73,28 @@ class UnauthenticatedMovieApiTests(TestCase):
         res = self.client.get(MOVIE_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    def test_retrieve_movie_detail_denied(self):
+        movie = sample_movie()
+        url = detail_url(movie.id)
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_create_movie_denied(self):
+        payload = {
+            "title": "New Movie",
+            "description": "New Description",
+            "duration": 120,
+        }
+        res = self.client.post(MOVIE_URL, payload)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_upload_image_denied(self):
+        movie = sample_movie()
+        url = image_upload_url(movie.id)
+        res = self.client.post(url, {"image": "not image"}, format="multipart")
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+
 
 class AuthenticatedMovieApiTests(TestCase):
     def setUp(self):
